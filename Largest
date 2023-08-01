@@ -1,0 +1,12 @@
+#include <bits/stdc++.h> 
+int largestElement(vector<int> &arr, int n) {
+   int max = INT_MIN;
+   int i = 0;
+   while(i < n){
+       if(max < arr[i]){
+           max = arr[i];
+       }
+       i++;
+   }
+   return max;
+}
