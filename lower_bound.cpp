@@ -6,7 +6,7 @@ int lowerBound(vector<int> arr, int n, int x) {
 	while(s <= e){
 		if(arr[mid] >= x){
 			ans = mid;
-			e = mid -1;
+			e = mid -1;// why we shift back bcz we need minimum answer
 		}
 		else{
 			s = mid + 1; 
