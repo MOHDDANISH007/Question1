@@ -7,6 +7,7 @@ bool findRedundantBrackets(string &s)
     int n = s.length();
     for(int i=0; i<n; i++){
         char ch = s[i];
+        // checking the conditions for open bracket or any operator if it is yes then please put or insert in the stack and go ahead.
         if(ch == '(' || ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '%'){
             st.push(ch);
         }
@@ -25,9 +26,10 @@ bool findRedundantBrackets(string &s)
                 if(isredundant == true){
                     return true;
                 }
-                st.pop();
+                st.pop(); // if it is not redundant then make sure to pop the open bracket to check the another one is redundant bracket or not and go ahead.
             }
         }
     }
     return false;
 }
+
