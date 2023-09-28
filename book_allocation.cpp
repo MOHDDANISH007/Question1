@@ -44,7 +44,7 @@ int bookallocation(vector<int> arr, int size, int m){
             return i;
         }
     }
-    return -1;
+    return maxElement;
 }
 
 
