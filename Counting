@@ -1,4 +1,4 @@
-class Solution {
+hwoclass Solution {
 public:
     vector<int> countBits(int n) {
     vector <int> count(n+1, 0);
