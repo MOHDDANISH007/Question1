@@ -5,7 +5,8 @@
 "This repository is for asking and answering questions on a variety of topics like "array","linked_list","stack","queue", with a focus on questions from 'Leetcode' and 'Coding Ninjas'."
 ![Question Repository](https://miro.medium.com/v2/resize:fit:1400/1*4bhEXZ6s6DmaELOF7ZFaaw.png)
 
-[My profile link of "Coding Ninjas"] [https://www.codingninjas.com/studio/profile/Khann](https://www.codingninjas.com/studio/profile/Khann)
+[My profile link of "Coding Ninjas"] 
+[https://www.codingninjas.com/studio/profile/Khann](https://www.codingninjas.com/studio/profile/Khann)
 
 [My profile link of "LeetCode"] 
 
