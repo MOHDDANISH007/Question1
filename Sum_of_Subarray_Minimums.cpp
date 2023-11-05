@@ -1,4 +1,5 @@
-// Online C++ compiler to run C++ program online
+// Brute force Approach
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -21,12 +22,6 @@ int main() {
   cout << "Sum of minimum values in the subarrays: " << result << endl;
   return 0;
 }
-
-
-
-
-
-
 
 
 
