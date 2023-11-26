@@ -42,3 +42,68 @@ public:
         return cnt;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Recursive way solution 
+
+
+
+
+
+#include <bits/stdc++.h> 
+/************************************************************
+
+    Following is the Tree node structure
+    
+    template <typename T>
+    class TreeNode 
+    {
+        public : 
+        T val;
+        TreeNode<T> *left;
+        TreeNode<T> *right;
+
+        TreeNode(T val) 
+        {
+            this -> val = val;
+            left = NULL;
+            right = NULL;
+        }
+    };
+
+************************************************************/
+
+int minDepth(TreeNode<int>* root)
+{
+    // write your code here
+    if(root == nullptr){
+        return 0;
+    }
+    if(root->left == nullptr && root->right == nullptr){
+        return 1;
+    }
+    if(root->left == nullptr){
+        return 1+minDepth(root->right);
+    }
+    if(root->right == nullptr){
+        return 1+minDepth(root->left);
+    }
+    return min(minDepth(root->left),minDepth(root->right))+1;
+}
