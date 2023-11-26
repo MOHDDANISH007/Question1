@@ -28,3 +28,66 @@ public:
 
                 if (temp->left) {
                     q.push(temp->left);
+                }
+                if (temp->right) {
+                    q.push(temp->right);
+                }
+            }
+            cnt++; // Increment depth after processing all nodes at the current level
+        }
+        return cnt;
+    }
+};
+
+
+
+// Recursive way
+
+
+
+#include <bits/stdc++.h> 
+//TreeNode class definition
+/*
+template <typename T>
+class TreeNode
+{
+public:
+    T val;
+    TreeNode<T> *left;
+    TreeNode<T> *right;
+
+    TreeNode(T data)
+    {
+        this->val = data;
+        left = NULL;
+        right = NULL;
+    }
+
+    ~TreeNode()
+    {
+        if (left != NULL)
+        {
+            delete left;
+        }
+        if (right != NULL)
+        {
+            delete right;
+        }
+    }
+};
+
+*/
+
+int findMaxDepth(TreeNode<int> *root) 
+{
+	//Write your code here.  
+    if(root == nullptr){
+        return 0;
+    }
+    else{
+        int left = findMaxDepth(root->left);
+        int right = findMaxDepth(root->right);
+
+        return max(left,right)+1;
+    }
+}
