@@ -27,3 +27,18 @@ public:
                 q.pop();
 
                 if (temp->left) {
+                    q.push(temp->left);
+                }
+                if (temp->right) {
+                    q.push(temp->right);
+                }
+                if(temp -> left == nullptr && temp -> right == nullptr){
+                    return cnt;
+                }
+            }
+            cnt++;
+
+        }
+        return cnt;
+    }
+};
