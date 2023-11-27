@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// Approach 1 which is brute force time complexity is o(n^2)
 class Solution {
 public:
     int maxi = INT_MIN;
