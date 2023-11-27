@@ -40,3 +40,33 @@ public:
         return maxi;
     }
 };
+
+
+
+
+// Approach 2 optimal solution 
+
+
+
+class Solution {
+public:
+    int diameterOfBinaryTree(TreeNode* root) {
+        int maxi = 0;
+        height(root, maxi);
+        return maxi;
+    }
+
+private:
+    int height(TreeNode* root, int& maxi) {
+        if (root == nullptr) {
+            return 0;
+        }
+
+        int lh = height(root->left, maxi);
+        int rh = height(root->right, maxi);
+
+        maxi = std::max(maxi, lh + rh);
+
+        return 1 + std::max(lh, rh);
+    }
+};
