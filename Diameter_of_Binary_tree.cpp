@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// Approach 1 which is brute force time complexity is o(n^2)
 class Solution {
 public:
     int maxi = INT_MIN;
@@ -36,5 +38,35 @@ public:
     int diameterOfBinaryTree(TreeNode* root) {
         calculateDiameter(root);
         return maxi;
+    }
+};
+
+
+
+
+// Approach 2 optimal solution 
+
+
+
+class Solution {
+public:
+    int diameterOfBinaryTree(TreeNode* root) {
+        int maxi = 0;
+        height(root, maxi);
+        return maxi;
+    }
+
+private:
+    int height(TreeNode* root, int& maxi) {
+        if (root == nullptr) {
+            return 0;
+        }
+
+        int lh = height(root->left, maxi);
+        int rh = height(root->right, maxi);
+
+        maxi = std::max(maxi, lh + rh);
+
+        return 1 + std::max(lh, rh);
     }
 };
