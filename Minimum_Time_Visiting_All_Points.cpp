@@ -1,5 +1,30 @@
-// 1st optimal approach
+// If u not understand this solution then go " Chebyshev distance "
+// link -> https://en.wikipedia.org/wiki/Chebyshev_distance
 
+// 1nd optimal approach
+
+#include <bits/stdc++.h>
+ 
+class Solution {
+public:
+    int solve(vector<int> p1, vector<int> p2){
+        return max(abs(p1[0]- p2[0]),abs(p1[1]-p2[1]));
+    }
+
+    int minTimeToVisitAllPoints(vector<vector<int>>& points) {
+        int mini_time = 0;
+
+        for(int i=0; i<points.size()-1; i++){
+            mini_time += solve(points[i], points[i+1]);
+
+        }
+        return mini_time;
+    }
+};
+
+
+
+// 2st optimal approach
 
 class Solution {
 public:
@@ -25,23 +50,3 @@ public:
 
 
 
-// 2nd optimal approach
-
-#include <bits/stdc++.h>
- 
-class Solution {
-public:
-    int solve(vector<int> p1, vector<int> p2){
-        return max(abs(p1[0]- p2[0]),abs(p1[1]-p2[1]));
-    }
-
-    int minTimeToVisitAllPoints(vector<vector<int>>& points) {
-        int mini_time = 0;
-
-        for(int i=0; i<points.size()-1; i++){
-            mini_time += solve(points[i], points[i+1]);
-
-        }
-        return mini_time;
-    }
-};
