@@ -1,88 +1,85 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
-/************************************************************
-
-Following is the Binary Tree node class
-    
-template <typename T = int>
-class TreeNode
-{
+class Solution {
 public:
-    T data;
-    TreeNode<T> *left;
-    TreeNode<T> *right;
+    void solve(Node* root, vector<int>& ans) {
+        map<int, map<int, vector<int>>> mp; // Corrected map declaration
+        queue<pair<Node*, pair<int, int>>> q; // Corrected queue declaration
 
-    TreeNode(T val)
-    {
-        this->data = val;
-        left = nullptr;
-        right = nullptr;
-    }
+        q.push({root, {0, 0}}); // Corrected push statement
 
-    ~TreeNode()
-    {
-        if (left != nullptr)
-        {
-            delete left;
-        }
-        if (right != nullptr)
-        {
-            delete right;
-        }
-    }
-};
+        while (!q.empty()) {
+            auto it = q.front();
+            q.pop();
 
-************************************************************/
+            Node* node = it.first;
+            int hd = it.second.first;
+            int level = it.second.second; // Corrected variable name
 
-vector<int> verticalOrderTraversal(TreeNode<int> *root)
-{
-    vector<int> ans;
+            mp[hd][level].push_back(node->data);
 
-    // Write your code here.
-    if (root == nullptr)
-    {
-        return ans;
-    }
-
-    map<int, map<int, vector<int>>> nodes;
-    queue<pair<TreeNode<int> *, pair<int, int>>> q;
-    q.push({root, {0, 0}});
-
-    while (!q.empty())
-    {
-        auto p = q.front();
-        q.pop();
-
-        TreeNode<int> *temp = p.first;
-        int line = p.second.first;
-        int level = p.second.second;
-
-        nodes[line][level].push_back(temp->data);
-
-        if (temp->left != nullptr)
-        {
-            q.push({temp->left, {line - 1, level + 1}});
+            if (node->left) { // Corrected condition
+                q.push({node->left, {hd - 1, level + 1}}); // Corrected push statement
+            }
+            if (node->right) { // Corrected condition
+                q.push({node->right, {hd + 1, level + 1}}); // Corrected push statement
+            }
         }
 
-        if (temp->right != nullptr)
-        {
-            q.push({temp->right, {line + 1, level + 1}});
-        }
-    }
-
-    // Extract values from the map in order
-    for (auto &line : nodes)
-    {
-        for (auto &level : line.second)
-        {
-            for (auto &value : level.second)
-            {
-                ans.push_back(value);
+        for (auto first : mp) {
+            for (auto second : first.second) {
+                for (auto val : second.second) {
+                    ans.push_back(val);
+                }
             }
         }
     }
 
-    return ans;
-}
+    // Function to find the vertical order traversal of Binary Tree.
+    vector<int> verticalOrder(Node* root) {
+        vector<int> ans;
+        if (root == nullptr) {
+            return ans;
+        }
+        solve(root, ans);
+        return ans;
+    }
+};
+
+
+
+/* Inorder traveral code 
+
+class Solution
+{
+public:
+    void solve(Node* root, map<pair<int,int>, vector<int>>& mp, int hd, int level){
+        if(root == nullptr){
+            return;
+        }
+        else{
+            // preorder traversal
+            mp[{hd, level}].push_back(root->data); // Change {} to [] and use push_back instead of insert
+            solve(root->left, mp, hd-1, level+1); // Change ans to mp
+            solve(root->right, mp, hd+1, level+1); // Change ans to mp
+        }
+    }
+
+    // Function to find the vertical order traversal of Binary Tree.
+    vector<int> verticalOrder(Node *root)
+    {
+        // Your code here
+        vector<int> ans;
+
+        if(root == nullptr){
+            return ans;
+        }
+        map<pair<int,int>, vector<int>> mp;
+
+        solve(root, mp, 0, 0); // Change ans to mp
+        for (auto it : mp) {
+            vector<int> values = it.second;
+            ans.insert(ans.end(), values.begin(), values.end());
+        }
+        return ans;
+    }
+};
+*/
