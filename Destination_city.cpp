@@ -1,10 +1,3 @@
-// Link of the question
-
-
-// CODE
-
-
-
 #include <vector>
 #include <string>
 #include <map>
@@ -32,3 +25,24 @@ public:
     }
 };
 
+
+// Brute force approach
+
+/*
+for(int i=0; i<paths.size(); i++){
+    string candidate = paths[i][1];
+    bool good_city = true;
+
+    for(int j=0; j<paths.size(); j++){
+        if(candidate == paths[j][0]){
+            good_city = false;
+            break;
+        }
+    } 
+    if(good_city){
+        return candidate;
+    }
+    }
+    return "";
+}
+*/
