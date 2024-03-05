@@ -10,21 +10,59 @@
  */
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
-        if(head == NULL || head->next == NULL){
-            return head;
-        }
+  ListNode* reverse(ListNode* temp, ListNode* prev) {
+    if (temp == nullptr) {
+        return prev;
+    } else {
+        ListNode* nextNode = temp->next;
+        temp->next = prev;
+        return reverse(nextNode, temp);
+    }
+}
 
-        ListNode* prev = NULL;
-        ListNode* cur = head;
-        ListNode* forward = NULL;
+ListNode* reverseList(ListNode* head) {
+    // Using Recursion
+    ListNode* temp = head;
+    ListNode* prev = nullptr;
+    ListNode* newHead = reverse(temp, prev); 
+    return newHead;
 
-        while(cur != NULL){
-            forward = cur->next;
-            cur->next = prev;
-            prev = cur;
-            cur = forward;
-        }
-        return prev; 
+        // Using while loop and pointer changing
+        // if(head == nullptr){
+        //     return head;
+        // }
+
+        // ListNode* front = head ;
+        // ListNode* prev  = nullptr;
+
+        // while(front != nullptr){
+        //     front = front->next;
+        //     head->next = prev;
+        //     prev  = head;
+        //     head = front;
+        // }
+        // // head = prev;
+        // return prev;
+
+
+        // ListNode* cur = head;
+        
+        // using stack data structure
+        // stack<int> st;
+
+        // while(cur != nullptr){
+        //     st.push(cur->val);
+        //     cur = cur->next;
+        // }
+
+        // cur = head;
+
+        // while(cur != nullptr){
+        //     cur->val = st.top();
+        //     st.pop();
+        //     cur = cur->next;
+        // }
+
+        // return head;
     }
 };
