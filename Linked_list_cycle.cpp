@@ -8,6 +8,8 @@
  */
 class Solution {
 public:
+    // This solution is done by "Tortoise and hare algorithm "
+
     bool hasCycle(ListNode *head) {
         if(head == NULL){
             return NULL;
