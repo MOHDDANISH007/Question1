@@ -1,44 +1,51 @@
+#include <stack>
+#include <string>
+using namespace std;
+
 class Solution {
 public:
     string removeKdigits(string num, int k) {
-        if(num.size() <= k){
-            return "0";
-        }
-        if(k <= 0){
+        stack<char> l_To_r;
+        
+        // Edge case: If k is non-positive, return the number itself
+        if (k <= 0) {
             return num;
         }
-
-        stack <char> st;
-        st.push(num[0]);
-        string ans = "";
-
-        for(int i=1; i<num.length(); i++){
-            while(k > 0 && !st.empty() && num[i] < st.top() ){
+        
+        int length = num.size();
+        for (int i = 0; i < length; i++) {
+            // Pop digits from stack while the current digit is smaller than the top of the stack
+            while (!l_To_r.empty() && k > 0 && num[i] < l_To_r.top()) {
+                l_To_r.pop();
                 k--;
-                st.pop();
             }
-
-            if(st.empty() && num[i] == '0'){
+            // Skip leading zeros
+            if (l_To_r.empty() && num[i] == '0') {
                 continue;
             }
-            st.push(num[i]);
+            l_To_r.push(num[i]);
         }
-
-        while(k > 0 && !st.empty()){
+        
+        // Pop remaining digits from stack to remove k digits
+        while (k > 0 && !l_To_r.empty()) {
+            l_To_r.pop();
             k--;
-            st.pop();
         }
-
-        while(!st.empty()){
-            ans.push_back(st.top());
-            st.pop();
+        
+        // Construct the answer string
+        string ans = "";
+        while (!l_To_r.empty()) {
+            ans += l_To_r.top();
+            l_To_r.pop();
         }
+        
+        // If the resulting string is empty, return "0"
         reverse(ans.begin(), ans.end());
-
-        if(ans.length() > 0){
-            return ans;
+        if (ans.empty()) {
+            return "0";
         }
-        return "0";
-
+        
+        return ans;
     }
 };
+
