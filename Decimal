@@ -1,0 +1,48 @@
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// Two approach for printing the the deciaml to binary
+int main() {
+    // int n = 8;
+    // int binary_number = 0;
+    // int cnt = 0;
+    // while(n > 0){
+    //     int rem = n%2;
+    //     int power = pow(10, cnt);
+    //     binary_number += rem*power;
+    //     n /=2;
+    //     cnt++;
+    // }
+    // cout << binary_number << endl;
+ int n = 5;
+    vector<int> arr; // Initialize an empty vector to store binary digits
+
+    while (n > 0) {
+        int rem = n % 2;    // Calculate the remainder when n is divided by 2
+        arr.push_back(rem); // Store the remainder (binary digit) in the vector
+        n /= 2;             // Divide n by 2 to get the next bit
+    }
+
+    // Output the binary representation stored in the vector
+    if (arr.empty()) {
+        cout << "Binary representation: 0"; // If the vector is empty (n=0), output "0"
+    } else {
+        cout << "Binary representation: ";
+        for (int i = arr.size() - 1; i >= 0; i--) {
+            cout << arr[i]; // Print binary digits in reverse order (MSB to LSB)
+        }
+    }
+    cout << endl;
+
+    return 0;
+    
+    
+    
+
+    return 0;
+}
+
+
+
