@@ -46,3 +46,37 @@ int main() {
 
 
 
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// Function to recursively convert an integer 'n' to its binary representation
+long long solve(long long n, long long& binary_number, long long cnt) {
+    // Base case: If 'n' becomes zero or negative, return the accumulated binary_number
+    if (n <= 0) {
+        return binary_number;
+    }
+
+    int rem = n % 2;           // Calculate the remainder when 'n' is divided by 2
+    int c = pow(10, cnt);      // Calculate the power of 10 based on the count of digits processed
+    binary_number += rem * c;  // Update the binary_number by adding the current binary digit
+
+    // Recursive call: Divide 'n' by 2, increment the count, and recurse
+    return solve(n / 2, binary_number, cnt + 1);
+}
+
+int main() {
+    long long n = 100000;
+    long long binary_number = 0;
+    long long cnt = 0;
+
+    // Call the solve function to convert 'n' to its binary representation
+    long long result = solve(n, binary_number, cnt);
+
+    // Output the binary representation
+    cout << "The Binary Representation of " << n << " is " << result << endl;
+
+    return 0;
+}
