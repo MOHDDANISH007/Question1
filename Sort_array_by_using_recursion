@@ -1,0 +1,35 @@
+// This problem is solve by using "IBH" 
+// step1 - Design the hypothesis
+// step2 - write the indcution
+// step3 - write the base case
+
+
+// Online C++ compiler to run C++ program online
+#include <bits/stdc++.h>
+using namespace std;
+
+ void sort(vector<int>& arr, int last_index){
+     if(last_index < 0){
+         return;
+     }
+     int last_element = arr[last_index];
+     
+     sort(arr, last_index-1);
+     
+     for(int i=0; i<last_index; i++){
+         if(arr[i] > last_element){
+             swap(arr[i], arr[last_index]);
+         }
+     }
+ }
+
+int main() {
+    vector<int> arr = {21,23,121,234,234112,121213432,2349};
+    sort(arr, 6);
+    for(auto it:arr){
+        cout << it << " ";
+    }cout << endl;
+    
+    
+    return 0;
+}
